@@ -1,25 +1,27 @@
 use std::fs;
+use std;
 use std::fs::File;
 use std::io::Read;
 use std::io::Write;
 
+
 fn main() {
     let mut command_line: std::env::Args = std::env::args();
    
-    let file_name;
-    let c1;
-    let c2;
+    let file_name : std::string::String;
+    let c1        : std::string::String;
+    let c2        : std::string::String;
         
-    if(1) // to do: num of args
+    if(true) // to do: num of args
     {
-        println("Example command line: main.exe ../Joe.txt this sth");
+        println!("Example command line: main.exe ../Joe.txt this sth");
 
-        file_name = "./Joe.txt"; 
-        c1 = "this";
-        c2 = "sth";
+        file_name = "./Joe.txt".to_string(); 
+        c1 = "this".to_string();
+        c2 = "sth".to_string();
         
         let data = "Writing this to a this file.\n";
-        fs::write(file_name, data).expect("Unable to write file");
+        fs::write(file_name.to_string(), data).expect("Unable to write file");
     } 
     else
     {        
@@ -38,16 +40,17 @@ fn main() {
     //     println!("Line: {}", line);
     // }
 
-    let mut file = File::open(file_name).unwrap();
+    let mut file = File::open(file_name.to_string()).unwrap();
     let mut contents = String::new();
     file.read_to_string(&mut contents).unwrap();
-    print!("{}", contents);
+    print!("Readed: {}", contents);
 
     // let result = "Hello World! !".replace("!", "?");
     // println!("{}", result); // => "Hello World? ?"
-    contents = contents.replace(c1, c2); 
+    contents = contents.replace(&c1.to_string(), &c2.to_string()); 
 
-    let mut file = File::create(file_name).expect("create failed");
+    let mut file = File::create(file_name.to_string()).expect("create failed");
+    print!("Saved : {}", contents);
     file.write_all(contents.as_bytes()).expect("write failed");
 //    file.write_all("Hello World".as_bytes()).expect("write failed");
 
