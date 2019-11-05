@@ -13,6 +13,23 @@ string replaceFirstOccurrence(
     return s.replace(pos, toReplace.length(), replaceWith);
 }
 
+void replaceAllInFiles(ifstream &ifile, ofstream &ofile, string c1, string c2);
+{
+
+    while( !ifile.eof() )
+    {
+        getline(ifile, buff);
+
+        while( buff.find(c1) < -1 )                                     // line have more occurrence of to_replace word          
+        {
+            buff = replaceFirstOccurrence(buff, c1, c2);
+            cout << buff;
+        }
+        ofile <<  buff;
+    }
+}
+ 
+
 // --------------------------------------------------------------
 
 int main (int argc, char *argv[])
@@ -20,6 +37,7 @@ int main (int argc, char *argv[])
     string fileName ;
     string c1       ;
     string c2       ;
+   
     // Default parm
     if ( argc < 3 )
     {
@@ -42,6 +60,8 @@ int main (int argc, char *argv[])
         string c2 = argv[3];
     }
 
+    
+    
     // -------------------------------------------------------------
 
     ifstream ifile;                                                     // input file
@@ -49,22 +69,12 @@ int main (int argc, char *argv[])
     string buff, replaced = "replaced.txt";
 
     ifile.open (fileName.c_str());
-    ofile.open(replaced.c_str());
+    ofile.open (replaced.c_str());
 
     if( !ifile.is_open() )
         cerr << "Input file is not open" << endl;
 
-    while( !ifile.eof() )
-    {
-        getline(ifile, buff);
-
-        while( buff.find(c1) < -1 )                                     // line have more occurrence of to_replace word          
-        {
-            buff = replaceFirstOccurrence(buff, c1, c2);
-            cout << buff;
-        }
-        ofile <<  buff;
-    }
+    replaceAllInFiles( &ifile, &ofile, c1, c2);
 
     ifile.close();
     ofile.close();
