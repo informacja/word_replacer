@@ -23,7 +23,7 @@ int main (int argc, char *argv[])
     // Default parm
     if ( argc < 3 )
     {
-        cout << "Examle command: 4.exe fileName.txt c1 c2\n";
+        cout << "Example command: 4.exe fileName.txt c1 c2\n";
 
         fileName = "Joe.txt";
         c1 = "this";
