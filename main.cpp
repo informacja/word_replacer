@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 string replaceFirstOccurrence(
         string& s,
         const string& toReplace,
@@ -14,6 +13,7 @@ string replaceFirstOccurrence(
     return s.replace(pos, toReplace.length(), replaceWith);
 }
 
+// --------------------------------------------------------------
 
 int main (int argc, char *argv[])
 {
@@ -44,22 +44,21 @@ int main (int argc, char *argv[])
 
     // -------------------------------------------------------------
 
-    ifstream ifile;
-    ofstream ofile;
+    ifstream ifile;                                                     // input file
+    ofstream ofile;                                                     // output file
     string buff, replaced = "replaced.txt";
 
     ifile.open (fileName.c_str());
-      ofile.open(replaced.c_str());
-//    ofile.open (fileName.c_str());
+    ofile.open(replaced.c_str());
 
     if( !ifile.is_open() )
-        cerr << "Nie udalo sie otworzyć pliku" << endl;
+        cerr << "Input file is not open" << endl;
 
     while( !ifile.eof() )
     {
         getline(ifile, buff);
 
-        while( buff.find(c1) < -1 )
+        while( buff.find(c1) < -1 )                                     // line have more occurrence of to_replace word          
         {
             buff = replaceFirstOccurrence(buff, c1, c2);
             cout << buff;
