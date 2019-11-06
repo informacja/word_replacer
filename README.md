@@ -10,3 +10,7 @@ https://insights.stackoverflow.com/survey/2019#most-loved-dreaded-and-wanted
 
 
 https://doc.rust-lang.org/1.5.0/book/hello-world.html
+
+```sh
+ git config --global user.name "informacja"
+ ```
