@@ -20,3 +20,5 @@ https://medium.com/@jondot/my-key-learnings-after-30-000-loc-in-rust-a553e6403c1
 ```sh
  git config --global user.name "informacja"
  ```
+
+<img style="display: inlinie;" src="/ps.PNG"> </img>
