@@ -1,10 +1,10 @@
 # word_replacer
-Comparison of code in C++ and Rust 
+Comparison of code in C++ and Rust. App have to find and replace word given as param, and save modyfied text file.
 
 https://insights.stackoverflow.com/survey/2019#most-loved-dreaded-and-wanted
 
 
-## Rust vs C++
+## Rust vs C++ syntax
 <img style="display: inlinie;" src="/70.PNG"> </img>
 
 
