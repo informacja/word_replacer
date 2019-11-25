@@ -3,16 +3,6 @@
 
 using namespace std;
 
-string replaceFirstOccurrence(
-        string& s,
-        const string& toReplace,
-        const string& replaceWith)
-{
-    size_t pos = s.find(toReplace);
-    if (pos == string::npos) return s;
-    return s.replace(pos, toReplace.length(), replaceWith);
-}
-
 void replaceAllInFiles(ifstream &ifile, ofstream &ofile, string c1, string c2)
 {
     string buff;
@@ -58,20 +48,18 @@ int main (int argc, char *argv[])
 
     // -------------------------------------------------------------
 
-    ifstream ifile;                                                     // input file
-    ofstream ofile;                                                     // output file
+    ifstream ifile, ofile;                                          // input file, output file
+                                                    
     string buff, replaced = "replaced.txt";
 
-    ifile.open (fileName.c_str());
-    ofile.open (replaced.c_str());
+    ifile.open (fileName.c_str()); ofile.open (replaced.c_str());
 
     if( !ifile.is_open() )
         cerr << "Input file is not open" << endl;
 
     replaceAllInFiles( ifile, ofile, c1, c2);
 
-    ifile.close();
-    ofile.close();
+    ifile.close(); ofile.close();
 
     remove(fileName.c_str());
     cout << endl << rename( replaced.c_str() , fileName.c_str() );
